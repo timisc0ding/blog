@@ -1,7 +1,7 @@
 ---
 title: "Static Blog"
-date: 2023-05-31 06:00:00 +0800
-last_modified_at: 2023-05-31 12:00:00 +0800
+date: 2024-05-31 01:00:00 +0800
+last_modified_at: 2024-05-31 02:00:00 +0800
 categories: [blog]
 tags: [learning, blog, code]
 ---
@@ -60,3 +60,9 @@ I also found some websites which has useful syntax for Jekyll markdown:
 > This is an example of a Danger block.
 {: .prompt-danger }
 ```
+
+## Customize the Favicon
+
+Tutorial on customizing the favicon: 
+
+<https://chirpy.cotes.page/posts/customize-the-favicon/>
