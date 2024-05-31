@@ -1,6 +1,6 @@
 ## My personal blog
 
-Visit my blog on <timisc0ding.github.io>
+Visit my blog on [timisc0ding.github.io](timisc0ding.github.io)
 
 Created using Chirpy theme for Jekyll.
 
