@@ -58,3 +58,204 @@ const app = Vue.createApp({
 
 app.mount("#app")
 ```
+
+## Data
+
+Next is data or dynamic variables, this allows us to output variables that we can easily change. For that, we need to use the `data()` function inside our `Vue.createApp()`
+
+``` js
+const app = Vue.createApp({
+    data() {
+        return {
+            counter: 15
+        }
+    }
+})
+```
+
+And to reference it inside our app or template, we need to use curly brackets like this
+
+``` html
+<div id="app"> 
+        Count: {% raw %} {{ counter }} {% endraw %}
+</div>
+```
+
+Where we get something like this:
+
+<kbd><img src="/assets/img/posts/2024-05-31-learning-vuejs/data-01.png"></kbd>
+
+## On-Click Event
+
+We move on to click events where specific functions/methods will be carried out when these events are triggered.
+
+The first one would be the `v-on:click` or we could also use @ to replace `v-on` as `@click` to listen for an event when the mouse clicks on the object/component
+
+``` html
+<button v-on:click="counter++">Increase count</button>
+```
+
+Then, we will get a result like this:
+
+<kbd><img src="/assets/img/posts/2024-05-31-learning-vuejs/click-01.gif"></kbd>
+
+## Methods
+We can run the codes inside our js component through the use of methods. For example, let’s say we want to create a method that changes a text from “Hello World” to “Hello Vue!”.
+
+Firstly, let’s create our html code along with a button.
+
+``` html
+<div id="app"> 
+        <h1> {% raw %} {{ text }} {% endraw %}</h1>
+
+        <button v-on:click="changeText">Change text</button>
+ </div>
+```
+Next, we will need to create a js script where we add a new component inside our app, that is the methods component and create a function called `changeText()`. This function will be invoked on the onclick event for the button. We need to add `this.` in front of our variable so as to be able to access it as it will reference the component itself, change the data.
+
+``` js
+const app = Vue.createApp({
+    data() {
+        return {
+            text: "Hello World"
+        }
+    },
+    methods: {
+        changeText() {
+            this.text = 'Hello Vue'
+        }
+    }
+})
+```
+
+As a result, we get something like this:
+
+<kbd><img src="/assets/img/posts/2024-05-31-learning-vuejs/click-02.gif"></kbd>
+
+At the same time, we are able to pass in a value into the function directly. For example:
+
+``` html
+<div id="app"> 
+        <h1> {{ text }} </h1>
+
+        <button v-on:click="changeText('Hello Vue')">Change text</button>
+ </div>
+```
+
+``` js
+const app = Vue.createApp({
+    data() {
+        return {
+            text: "Hello World"
+        }
+    },
+    methods: {
+        changeText(text) {
+            this.text = text
+        }
+    }
+})
+```
+This will give us the same result as the function above, but we will be able to take in a argument and be able to change the value much more easily.
+
+## Conditional Rendering
+
+Vue allows for easy conditional rendering through the use of directives `v-if`, `v-else` and `v-show`. These will only show the content when it is true. This could be useful to create user login or a navbar dynamically.
+
+Let’s create a block of text that will show and hide itself with a button.
+
+``` html
+<button @click="shownState = !shownState">
+            <span v-if="shownState">Hide Text</span>
+            <span v-else>Show Text</span>
+</button>
+
+<div v-show="shownState">
+       	<h1> This is a text. </h1>
+</div>
+```
+
+Along with a `shownState` variable to keep track of the state.
+
+``` js
+const app = Vue.createApp({
+    data() {
+        return {
+            shownState: true
+        }
+    }
+})
+```
+
+This will be the result:
+
+<kbd><img src="/assets/img/posts/2024-05-31-learning-vuejs/click-03.gif"></kbd>
+
+However, you may be wondering what is the difference between `v-if` and `v-show`, if both of them will hide the text. This is because `v-if` directly removes the content from the html while `v-show` will use css to hide it. To use this effectively, `v-if` is better used in situations where things are rarely shown like user login state while `v-show` should be used in cases like navbars.
+
+## Other Mouse Events
+
+Other than the on-click event, there is also other events like:
+
+1. `v-on:mouseover` where it is trigger when the mouse **enter** the component
+2. `v-on:mouseleave` where it is trigger when the mouse **leaves** the component
+3. `v-on:dblclick` where it is trigger when the mouse **double clicks** the component
+4. `v-on:mousemove` where it is trigger when the mouse **moves inside** the component
+
+At the same time, we can console log this event to receive useful properties like `ctrlKey` to know whether the control key was pressed or `type` to know the type of event.
+
+``` html
+<div v-on:mouseover="handleEvent($event)">mouseover</div>
+```
+
+```js
+const app = Vue.createApp({
+    methods: {
+        handleEvent(e) {
+            console.log(e, e.type)
+        }
+    }
+})
+```
+
+We need to add a `$event` when we want to pass in our own arguments, but if we don’t pass any in, we will automatically get an event object as the first argument.
+
+As another example, let’s make it so it will display the position of the mouse when it is inside a box using the `v-on:mouseover` event where it will constantly trigger an event handler that will update the position value.
+
+``` html
+<style>
+        .box {
+            padding: 100px 0;
+            width: 400px;
+            text-align: center;
+            background: #ddd;
+            margin: 20px;
+            display: inline-block;
+        }
+  </style>
+```
+
+``` html
+<div class="box" @mousemove="handleMousemove">position - {% raw %} {{ x }} - {{ y }} {% endraw %}</div>
+```
+
+``` js
+const app = Vue.createApp({
+    data() {
+        return{
+            x: 0,
+            y: 0
+        }
+    },
+    methods: {
+        handleMousemove(e) {
+            this.x = e.offsetX,
+            this.y = e.offsetY
+        }
+    }
+})
+```
+
+And this is the result:
+
+<kbd><img src="/assets/img/posts/2024-05-31-learning-vuejs/click-04.gif"></kbd>
