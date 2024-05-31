@@ -1,7 +1,7 @@
 ---
 title: "Static Blog"
 date: 2024-05-31 01:00:00 +0800
-last_modified_at: 2024-05-31 02:00:00 +0800
+last_modified_at: 2024-05-31 23:25:00 +0800
 categories: [blog]
 tags: [learning, blog, code]
 ---
@@ -12,7 +12,7 @@ To begin my coding journey, I wanted to create a blog so as to keep track of my 
 
 Jekyll will directly create a static page that can be deployed onto Github Pages with a subdomain of our username.
 
-I followed a tutorial by [Ahmed Tremo](https://www.youtube.com/@ahmedtremo) for the setup process:
+I followed a tutorial by [Ahmed Tremo](https://www.youtube.com/@ahmedtremo){:target="_blank"} for the setup process:
 
 {% include /embed/youtube.html id="m1RYsmOMPLs" %}
 
@@ -29,9 +29,9 @@ bundle exec jekyll s
 
 I also found some websites which has useful syntax for Jekyll markdown:
 
-1. [Jekyll Markdown Cheat Sheet](https://www.ihsantopaloglu.com/Jekyll-Markdown-Cheat-Sheet/) by ihsantopaloglu
-2. [Basic Syntax](https://www.markdownguide.org/basic-syntax/) by MarkDownGuide
-3. [Basic writing and formatting syntax](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#GitHub-flavored-markdown) by Github
+1. [Jekyll Markdown Cheat Sheet](https://www.ihsantopaloglu.com/Jekyll-Markdown-Cheat-Sheet/){:target="_blank"} by ihsantopaloglu
+2. [Basic Syntax](https://www.markdownguide.org/basic-syntax/){:target="_blank"} by MarkDownGuide
+3. [Basic writing and formatting syntax](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#GitHub-flavored-markdown){:target="_blank"} by Github
 
 ## Special Blocks 
 
@@ -65,4 +65,4 @@ I also found some websites which has useful syntax for Jekyll markdown:
 
 Tutorial on customizing the favicon: 
 
-<https://chirpy.cotes.page/posts/customize-the-favicon/>
+<https://chirpy.cotes.page/posts/customize-the-favicon/>{:target="_blank"}
