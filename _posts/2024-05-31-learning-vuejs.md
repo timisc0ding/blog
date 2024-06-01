@@ -259,3 +259,153 @@ const app = Vue.createApp({
 And this is the result:
 
 <kbd><img src="/assets/img/posts/2024-05-31-learning-vuejs/click-04.gif"></kbd>
+
+## Using v-for to Output Lists
+
+To create a list, we just need to use `[]` inside our data, for example:
+
+``` js
+const app = Vue.createApp({
+    data() {
+        return{
+            books: [
+                { title: 'One of Us is Lying', author: 'Karen McManus' },
+                { title: 'All the Bright Places', author: 'Jennifer Niven' },
+                { title: 'Holding Up the Universe', author: 'Jennifer Niven' }
+            ]
+        }
+    }
+})
+```
+
+We can easily access our list using indexes and calling the properties. For example: 
+
+``` html
+{% raw %} {{ books[0].title }} - {{ books[0].author }} {% endraw %}
+```
+
+We can also use `v-for` to loop over our list and create a component for each item in the list. 
+
+``` html
+<ul>
+      <li v-for="item in books">
+             <p>{% raw %} {{ item.title }} - {{ item.author }} {% endraw %}</p>
+       </li>
+</ul>
+```
+This would be our result:
+
+<kbd><img src="/assets/img/posts/2024-05-31-learning-vuejs/vfor-01.png"></kbd>
+
+## Attribute Binding
+
+If we want to reference a data property directly inside an attribute, we would need to use `v-bind:` or just a `:`. For example:
+
+```js
+const app = Vue.createApp({
+    data() {
+        return{
+            url: "https://www.google.com"
+        }
+    }
+})
+```
+
+``` html
+<a href="url">Google</a>
+```
+
+If we reference our data property like this even if we add `{}`, it will fail like this: 
+
+<kbd><img src="/assets/img/posts/2024-05-31-learning-vuejs/vbind-01.png"></kbd>
+
+However, if we add `v-bind:` or `:` in front of the attribute, we will be able to reference the property.
+
+``` html
+<a v-bind:href="url">Google</a>
+```
+
+This time, we are successful:
+
+<kbd><img src="/assets/img/posts/2024-05-31-learning-vuejs/vbind-02.png"></kbd>
+
+## Dynamic Classes
+
+For dynamic classes, we will still need to use attribute binding but now we are able to dynamically add classes based on certain conditions for each object. For example, let’s say we want to add a `fav` class only when a property `isFav` is true.
+
+``` js
+const app = Vue.createApp({
+    data() {
+        return{
+            books: [
+                { title: 'One of Us is Lying', author: 'Karen McManus', img:"/assests/1.jpg", isFav: false },
+                { title: 'All the Bright Places', author: 'Jennifer Niven', img:"/assests/2.jpg", isFav: true },
+                { title: 'Holding Up the Universe', author: 'Jennifer Niven', img:"/assests/3.jpg", isFav: false }
+            ]
+        }
+    }
+})
+```
+
+``` html
+<style>
+        body {
+            margin: 20px auto;
+            max-width: 960px;
+            background: #eee;
+        }
+        h1, p, ul {
+            margin: 0;
+            padding: 0;
+        }
+        img {
+            width: 99px;
+            height: 176px;
+        }
+        li {
+            list-style-type: none;
+            background: #fff;
+            margin: 20px auto;
+            padding: 10px 20px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        li.fav {
+            background: #cc91e7;
+            color:#fff;
+        }
+</style>
+```
+
+``` html
+<ul>
+       <li v-for="item in books" v-bind:class="{ fav: item.isFav }">
+           <img v-bind:src="item.img" v-bind:alt="item.title">
+           {% raw %}<h1>{{ item.title }}</h1>
+           <p>{{ item.author }}</p>{% endraw %}
+       </li>
+</ul>
+```
+As you can see, we have a `v-bind:class` where we check if `isFav` is true, and add a `fav` class to it.
+
+As a result:
+
+<kbd><img src="/assets/img/posts/2024-05-31-learning-vuejs/vbind-03.png"></kbd>
+
+For a bit of a challenge, let’s make it so that we can change `isFav` with a click of a button.
+
+``` html
+<ul>
+       <li v-for="item in books" v-bind:class="{ fav: item.isFav }">
+             <img v-bind:src="item.img" v-bind:alt="item.title">
+              {% raw %}<h1>{{ item.title }}</h1>
+              <p>{{ item.author }}</p>{% endraw %}
+              <i @click=" item.isFav=!item.isFav " :class="{'fa-regular':!item.isFav, 'fa-solid':item.isFav }" class="fa-heart"></i>
+      </li>
+</ul>
+```
+When the heart is pressed, it will automatically change the class along with the `isFav` property.
+
+<kbd><img src="/assets/img/posts/2024-05-31-learning-vuejs/vbind-04.gif"></kbd>
