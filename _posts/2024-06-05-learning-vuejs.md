@@ -1,7 +1,6 @@
 ---
-title: "Learning Vue.js"
-date: 31/5/2024 22:45:00
-last_modified_at: 31/5/2024 22:14:00
+title: "Learning the Basics of Vue.js"
+date: 05/6/2024 13:30:00
 categories: [vuejs]
 tags: [learning, blog, code]
 ---
@@ -398,14 +397,55 @@ For a bit of a challenge, let’s make it so that we can change `isFav` with a c
 
 ``` html
 <ul>
-       <li v-for="item in books" v-bind:class="{ fav: item.isFav }">
-             <img v-bind:src="item.img" v-bind:alt="item.title">
-              {% raw %}<h1>{{ item.title }}</h1>
-              <p>{{ item.author }}</p>{% endraw %}
-              <i @click=" item.isFav=!item.isFav " :class="{'fa-regular':!item.isFav, 'fa-solid':item.isFav }" class="fa-heart"></i>
-      </li>
+    <li v-for="item in books" v-bind:class="{ fav: item.isFav }">
+        <img v-bind:src="item.img" v-bind:alt="item.title">
+        {% raw %}<h1>{{ item.title }}</h1>
+        <p>{{ item.author }}</p>{% endraw %}
+        <i @click=" item.isFav=!item.isFav " :class="{'fa-regular':!item.isFav, 'fa-solid':item.isFav }" class="fa-heart"></i>
+    </li>
 </ul>
 ```
 When the heart is pressed, it will automatically change the class along with the `isFav` property.
 
 <kbd><img src="/assets/img/posts/2024-05-31-learning-vuejs/vbind-04.gif"></kbd>
+
+## Computed Properties
+
+By using `computed`, we are able to compute some properties that we are able to retrieve through Vue.js.
+
+For example, let’s say we want to compute a property where we filter the books array and get only books that return `isFav` as true. We can do this through the use of a filter method.
+
+``` js
+const app = Vue.createApp({
+    data() {
+        return{
+            books: [
+                { title: 'One of Us is Lying', author: 'Karen McManus', img:"/assests/1.jpg", isFav: false },
+                { title: 'All the Bright Places', author: 'Jennifer Niven', img:"/assests/2.jpg", isFav: true },
+                { title: 'Holding Up the Universe', author: 'Jennifer Niven', img:"/assests/3.jpg", isFav: true }
+            ]
+        }
+    },
+    computed: {
+        filteredBooks() {
+            return this.books.filter((book) => book.isFav)
+        }
+    }
+})
+```
+And in our html code, we just need to change our mention of the books array
+
+``` html
+<ul>
+    <li v-for="item in filteredBooks" v-bind:class="{ fav: item.isFav }">
+        <img v-bind:src="item.img" v-bind:alt="item.title">
+        {% raw %}<h1>{{ item.title }}</h1>
+        <p>{{ item.author }}</p>{% endraw %}
+        <i @click=" item.isFav=!item.isFav " :class="{'fa-regular':!item.isFav, 'fa-solid':item.isFav }" class="fa-heart"></i>
+    </li>
+</ul>
+```
+
+And just like that, we get only books that have the `isFav` as true.
+
+<kbd><img src="/assets/img/posts/2024-05-31-learning-vuejs/computed-01.png"></kbd>
