@@ -449,3 +449,5 @@ And in our html code, we just need to change our mention of the books array
 And just like that, we get only books that have the `isFav` as true.
 
 <kbd><img src="/assets/img/posts/2024-05-31-learning-vuejs/computed-01.png"></kbd>
+
+And that would be the basics of Vue.js, continue to my next post for my learnings of Vue.js CLI.
