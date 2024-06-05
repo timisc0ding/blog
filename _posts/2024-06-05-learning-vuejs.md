@@ -82,7 +82,7 @@ And to reference it inside our app or template, we need to use curly brackets li
 
 Where we get something like this:
 
-<kbd><img src="/assets/img/posts/2024-05-31-learning-vuejs/data-01.png"></kbd>
+<kbd><img src="/assets/img/posts/2024-05-31-learning-vuejs/data-01.png" alt="data-01"></kbd>
 
 ## On-Click Event
 
@@ -96,7 +96,7 @@ The first one would be the `v-on:click` or we could also use @ to replace `v-on`
 
 Then, we will get a result like this:
 
-<kbd><img src="/assets/img/posts/2024-05-31-learning-vuejs/click-01.gif"></kbd>
+<kbd><img src="/assets/img/posts/2024-05-31-learning-vuejs/click-01.gif" alt="click-01"></kbd>
 
 ## Methods
 We can run the codes inside our js component through the use of methods. For example, let’s say we want to create a method that changes a text from “Hello World” to “Hello Vue!”.
@@ -129,7 +129,7 @@ const app = Vue.createApp({
 
 As a result, we get something like this:
 
-<kbd><img src="/assets/img/posts/2024-05-31-learning-vuejs/click-02.gif"></kbd>
+<kbd><img src="/assets/img/posts/2024-05-31-learning-vuejs/click-02.gif" alt="click-02"></kbd>
 
 At the same time, we are able to pass in a value into the function directly. For example:
 
@@ -188,7 +188,7 @@ const app = Vue.createApp({
 
 This will be the result:
 
-<kbd><img src="/assets/img/posts/2024-05-31-learning-vuejs/click-03.gif"></kbd>
+<kbd><img src="/assets/img/posts/2024-05-31-learning-vuejs/click-03.gif"  alt="click-03"></kbd>
 
 However, you may be wondering what is the difference between `v-if` and `v-show`, if both of them will hide the text. This is because `v-if` directly removes the content from the html while `v-show` will use css to hide it. To use this effectively, `v-if` is better used in situations where things are rarely shown like user login state while `v-show` should be used in cases like navbars.
 
@@ -257,7 +257,7 @@ const app = Vue.createApp({
 
 And this is the result:
 
-<kbd><img src="/assets/img/posts/2024-05-31-learning-vuejs/click-04.gif"></kbd>
+<kbd><img src="/assets/img/posts/2024-05-31-learning-vuejs/click-04.gif"  alt="click-04"></kbd>
 
 ## Using v-for to Output Lists
 
@@ -294,7 +294,7 @@ We can also use `v-for` to loop over our list and create a component for each it
 ```
 This would be our result:
 
-<kbd><img src="/assets/img/posts/2024-05-31-learning-vuejs/vfor-01.png"></kbd>
+<kbd><img src="/assets/img/posts/2024-05-31-learning-vuejs/vfor-01.png"  alt="vfor-01"></kbd>
 
 ## Attribute Binding
 
@@ -316,7 +316,7 @@ const app = Vue.createApp({
 
 If we reference our data property like this even if we add `{}`, it will fail like this: 
 
-<kbd><img src="/assets/img/posts/2024-05-31-learning-vuejs/vbind-01.png"></kbd>
+<kbd><img src="/assets/img/posts/2024-05-31-learning-vuejs/vbind-01.png"  alt="vbind-01"></kbd>
 
 However, if we add `v-bind:` or `:` in front of the attribute, we will be able to reference the property.
 
@@ -326,7 +326,7 @@ However, if we add `v-bind:` or `:` in front of the attribute, we will be able t
 
 This time, we are successful:
 
-<kbd><img src="/assets/img/posts/2024-05-31-learning-vuejs/vbind-02.png"></kbd>
+<kbd><img src="/assets/img/posts/2024-05-31-learning-vuejs/vbind-02.png"  alt="vbind-02"></kbd>
 
 ## Dynamic Classes
 
@@ -391,7 +391,7 @@ As you can see, we have a `v-bind:class` where we check if `isFav` is true, and 
 
 As a result:
 
-<kbd><img src="/assets/img/posts/2024-05-31-learning-vuejs/vbind-03.png"></kbd>
+<kbd><img src="/assets/img/posts/2024-05-31-learning-vuejs/vbind-03.png"  alt="vbind-03"></kbd>
 
 For a bit of a challenge, let’s make it so that we can change `isFav` with a click of a button.
 
@@ -407,7 +407,7 @@ For a bit of a challenge, let’s make it so that we can change `isFav` with a c
 ```
 When the heart is pressed, it will automatically change the class along with the `isFav` property.
 
-<kbd><img src="/assets/img/posts/2024-05-31-learning-vuejs/vbind-04.gif"></kbd>
+<kbd><img src="/assets/img/posts/2024-05-31-learning-vuejs/vbind-04.gif"  alt="vbind-04"></kbd>
 
 ## Computed Properties
 
@@ -448,6 +448,6 @@ And in our html code, we just need to change our mention of the books array
 
 And just like that, we get only books that have the `isFav` as true.
 
-<kbd><img src="/assets/img/posts/2024-05-31-learning-vuejs/computed-01.png"></kbd>
+<kbd><img src="/assets/img/posts/2024-05-31-learning-vuejs/computed-01.png"  alt="computed-01"></kbd>
 
 And that would be the basics of Vue.js, continue to my next post for my learnings of Vue.js CLI.
