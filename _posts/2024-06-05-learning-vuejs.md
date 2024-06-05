@@ -1,6 +1,6 @@
 ---
 title: "Learning the Basics of Vue.js"
-date: 05/6/2024 13:30:00
+date: 5/6/2024 13:30:00
 categories: [vuejs]
 tags: [learning, blog, code]
 ---
